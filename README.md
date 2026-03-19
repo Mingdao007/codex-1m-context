@@ -1,33 +1,68 @@
-# codex-1m-context
+# Codex 1M Context
 
-A Claude Code skill that configures [Codex CLI](https://github.com/openai/codex) to use a 1M token context window.
+Configure [Codex CLI](https://github.com/openai/codex) to use a 1M token context window with auto-compact at 900K. Works with `Claude Code CLI`.
 
-## What it does
+## What ships
 
-Adds two settings to `~/.codex/config.toml`:
+| Item | Path |
+|---|---|
+| Installable command | `codex-1m-context.md` |
+
+## Install / Use
+
+Copy to your Claude Code commands directory:
+
+```bash
+cp codex-1m-context.md ~/.claude/commands/
+```
+
+Then invoke in Claude Code:
+
+```
+/codex-1m-context
+```
+
+## Coverage
+
+Adds two lines to `~/.codex/config.toml`:
 
 ```toml
 model_context_window = 1000000
 model_auto_compact_token_limit = 900000
 ```
 
-This allows Codex to use the full 1M context window instead of the default, with auto-compaction triggered at 900K tokens.
+The skill only touches context window settings. It does not modify model selection, MCP servers, trust levels, or any other config.
 
-## Installation
+## Trigger examples
 
-Copy `codex-1m-context.md` to your Claude Code commands directory:
+- "Open 1M context for Codex"
+- "Codex 上下文开到 1M"
 
-```bash
-cp codex-1m-context.md ~/.claude/commands/
+## Non-trigger examples
+
+- Changing the Codex model or reasoning effort.
+- Configuring MCP servers or trust levels.
+
+## Privacy boundary
+
+This public repository contains no personal identifiers, absolute paths, tokens, or machine-specific configuration.
+
+## Repository layout
+
+```
+codex-1m-context/
+  codex-1m-context.md   # Claude Code command (entry point)
+  README.md             # This file
+  LICENSE
 ```
 
-Then use it in Claude Code:
+## Platform support
 
-```
-/codex-1m-context
-```
+- macOS
+- Linux
 
-## Requirements
+Requires `~/.codex/config.toml` to exist. If it does not, run `codex` once to generate a default config.
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI
-- [Codex CLI](https://github.com/openai/codex) installed with `~/.codex/config.toml` present
+## License
+
+MIT
